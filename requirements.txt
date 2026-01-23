@@ -1,5 +1,5 @@
-streamlit
-groq
-tavily-python
-python-dotenv
-duckduckgo-search
+streamlit>=1.28.0
+python-dotenv>=1.0.0
+groq>=0.4.0
+tavily-python>=0.3.0
+Pillow>=10.0.0

@@ -1,0 +1,18 @@
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
+
+# Serve static files
+[server.enableStaticServing]
+# This allows serving files from the 'static' folder
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+primaryColor = "#00FFB3"
+backgroundColor = "#050A18"
+secondaryBackgroundColor = "#071028"
+textColor = "#EAF2FF"
+font = "sans serif"

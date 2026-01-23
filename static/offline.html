@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyperionX - Offline</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: linear-gradient(135deg, #050A18, #071028);
+      color: #EAF2FF;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 500px;
+      padding: 40px;
+      background: rgba(10, 18, 42, 0.8);
+      border: 1px solid rgba(190, 205, 224, 0.16);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, rgba(77,163,255,0.2), rgba(0,255,179,0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: #00FFB3;
+    }
+    
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #4DA3FF, #00FFB3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p {
+      color: rgba(234, 242, 255, 0.72);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    button {
+      background: linear-gradient(135deg, rgba(77,163,255,0.92), rgba(0,255,179,0.82));
+      color: #061226;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 179, 0.3);
+    }
+    
+    .status {
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: rgba(255, 200, 50, 0.1);
+      border: 1px solid rgba(255, 200, 50, 0.3);
+      border-radius: 12px;
+      color: #FFD666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+        <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+      </svg>
+    </div>
+    
+    <h1>You're Offline</h1>
+    <p>HyperionX needs an internet connection to search the web and generate responses. Please check your connection and try again.</p>
+    
+    <button onclick="location.reload()">Try Again</button>
+    
+    <div class="status" id="status">
+      Waiting for connection...
+    </div>
+  </div>
+
+  <script>
+    // Check online status
+    function updateStatus() {
+      const status = document.getElementById('status');
+      if (navigator.onLine) {
+        status.textContent = 'Connection restored! Reloading...';
+        status.style.borderColor = 'rgba(0, 255, 179, 0.3)';
+        status.style.background = 'rgba(0, 255, 179, 0.1)';
+        status.style.color = '#00FFB3';
+        setTimeout(() => location.reload(), 1000);
+      } else {
+        status.textContent = 'Waiting for connection...';
+      }
+    }
+
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+    updateStatus();
+  </script>
+</body>
+</html>
